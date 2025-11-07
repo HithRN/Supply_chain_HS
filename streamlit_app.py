@@ -81,7 +81,7 @@ def load_custom_css():
 
     /* Header styling */
     .main-header {
-        background: linear-gradient(135deg, #5B7C99 0%, #3D5A73 100%);
+        background: linear-gradient(135deg, #5B7C99 17%, #3D5A73 83%);
         padding: 2rem;
         border-radius: 15px;
         margin-bottom: 2rem;
