@@ -4,9 +4,10 @@ pandas
 plotly
 requests
 seaborn
-scikit-learn==1.3.0
+scikit-learn==1.3.2
 streamlit
 tensorflow
 xgboost
+
 
 
