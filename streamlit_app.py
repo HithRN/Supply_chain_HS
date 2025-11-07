@@ -1485,9 +1485,9 @@ def show_analytics_page(models):
     """Model analytics and performance metrics"""
     st.header(" Model Analytics")
 
-    tabs = st.tabs([" Performance", " Feature Importance", " Error Analysis", " Model Comparison"])
+    tab1, tab2, tab3, tab4 = st.tabs([" Performance", " Feature Importance", " Error Analysis", " Model Comparison"])
 
-    with tabs[0]:
+    with tabs1:
         st.subheader("Performance Metrics")
 
         col1, col2, col3 = st.columns(3)
@@ -1501,7 +1501,7 @@ def show_analytics_page(models):
             fig = create_gauge_chart(0.87, "Resilience", 1.0)
             st.plotly_chart(fig, use_container_width=True)
 
-    with tabs[1]:
+    with tabs2:
         st.subheader("Top 15 Feature Importance")
 
         # Sample feature importance data
@@ -1533,7 +1533,7 @@ def show_analytics_page(models):
         )
         st.plotly_chart(fig, use_container_width=True)
 
-    with tabs[2]:
+    with tabs3:
         st.subheader("Prediction Error Distribution")
 
         errors = np.random.normal(0, 25, 1000)
@@ -1566,7 +1566,7 @@ def show_analytics_page(models):
             st.metric("95% Confidence Coverage", "94.7%", "+1.2%")
             st.metric("Prediction Bias", "$0.87", "-0.3%")
 
-    with tabs[3]:
+    with tabs4:
         st.subheader("Model Comparison")
 
         comparison_data = pd.DataFrame({
