@@ -847,8 +847,8 @@ def main():
             st.markdown('<div class="status-badge status-success"> Models Loaded</div>', unsafe_allow_html=True)
         if llm.is_available:
             st.markdown('<div class="status-badge status-success"> LLM Online</div>', unsafe_allow_html=True)
-        else:
-            st.markdown('<div class="status-badge status-warning"> LLM Offline</div>', unsafe_allow_html=True)
+        #else:
+            #st.markdown('<div class="status-badge status-warning"> LLM Offline</div>', unsafe_allow_html=True)
 
         st.markdown("---")
 
