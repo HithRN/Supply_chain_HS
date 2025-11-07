@@ -81,7 +81,7 @@ def load_custom_css():
 
     /* Header styling */
     .main-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #5B7C99 0%, #3D5A73 100%);
         padding: 2rem;
         border-radius: 15px;
         margin-bottom: 2rem;
@@ -282,7 +282,7 @@ class RegularizedEnsemble:
 
     def fit(self, X, y):
         """Fit all ensemble models with regularization"""
-        print("✓ Building Regularized Ensemble Models")
+        print(" Building Regularized Ensemble Models")
 
         regularized_models = {
             'RandomForest': RandomForestRegressor(
@@ -307,7 +307,7 @@ class RegularizedEnsemble:
             self.add_model(name, model)
 
         for name, model in self.models.items():
-            print(f"  ✓ Training {name}")
+            print(f"   Training {name}")
             if hasattr(model, 'fit'):
                 model.fit(X, y)
 
@@ -829,13 +829,13 @@ def main():
 
     # Sidebar
     with st.sidebar:
-        st.image("https://img.icons8.com/fluency/96/000000/supply-chain.png", width=100)
+        #st.image("https://img.icons8.com/fluency/96/000000/supply-chain.png", width=100)
         st.title(" Control Panel")
 
         page = st.radio(
             "Navigation",
             [" Dashboard", " SUREcast Prediction", "Model Analytics",
-             " DPO Training", " Batch Analysis", "⚙️ Settings"]
+             " DPO Training", " Batch Analysis", " Settings"]
         )
 
         st.markdown("---")
