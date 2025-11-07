@@ -4,7 +4,8 @@ pandas
 plotly
 requests
 seaborn
-sklearn
+scikit-learn
 streamlit
 tensorflow
 xgboost
+
