@@ -312,7 +312,7 @@ class RegularizedEnsemble:
                 model.fit(X, y)
 
         self.is_fitted = True
-        print("✓ Regularized Ensemble models trained successfully")
+        print(" Regularized Ensemble models trained successfully")
 
     def predict(self, X):
         """Make ensemble predictions"""
@@ -384,7 +384,7 @@ class Llama2Integrator:
 
     def query_llama2(self, prompt, max_tokens=300):
         if not self.is_available:
-            return "⚠️ Llama2 not available. Please start Ollama server."
+            return " Llama2 not available. Please start Ollama server."
 
         try:
             payload = {
@@ -424,27 +424,27 @@ def load_models():
         if os.path.exists('ensemble_model.pkl'):
             with open('ensemble_model.pkl', 'rb') as f:
                 models['ensemble'] = pickle.load(f)
-            st.success("✅ Ensemble models loaded")
+            st.success(" Ensemble models loaded")
 
         # Load preprocessor
         if os.path.exists('preprocessor.pkl'):
             with open('preprocessor.pkl', 'rb') as f:
                 models['preprocessor'] = pickle.load(f)
-            st.success("✅ Preprocessor loaded")
+            st.success(" Preprocessor loaded")
 
         # Load feature selector (CRITICAL!)
         if os.path.exists('feature_engineer.pkl'):
             with open('feature_engineer.pkl', 'rb') as f:
                 models['feature_engineer'] = pickle.load(f)
-            st.success("✅ Feature engineer loaded")
+            st.success(" Feature engineer loaded")
         else:
-            st.warning("⚠️ Feature engineer not found - feature selection may not work")
+            st.warning(" Feature engineer not found - feature selection may not work")
 
         # Load feature names
         if os.path.exists('used_features.json'):
             with open('used_features.json', 'r') as f:
                 models['features'] = json.load(f)['features']
-            st.success(f"✅ {len(models['features'])} features loaded")
+            st.success(f" {len(models['features'])} features loaded")
 
         # Load metadata
         if os.path.exists('model_metadata.json'):
@@ -454,7 +454,7 @@ def load_models():
         return models
 
     except Exception as e:
-        st.error(f"❌ Error loading models: {str(e)}")
+        st.error(f" Error loading models: {str(e)}")
         return None
 
 
@@ -600,10 +600,10 @@ def make_prediction(models, input_data):
             # Only transform at inference; selector must have been fit during training
             X = selector.transform(X)
             if st.session_state.get('show_debug', False):
-                st.success(f"✅ Features after selection: {X.shape[1]}")
+                st.success(f" Features after selection: {X.shape[1]}")
         else:
             # Deterministic fallback: never fit a selector on a single-sample request
-            st.warning("⚠️ Using fallback feature selection (deterministic alignment)")
+            st.warning(" Using fallback feature selection (deterministic alignment)")
 
             # 3a) Prefer stored indices if available
             if 'selected_indices' in models:
@@ -642,12 +642,12 @@ def make_prediction(models, input_data):
                 X = np.hstack([X, np.zeros((X.shape[0], pad))])
 
             if st.session_state.get('show_debug', False):
-                st.warning(f"⚠️ Fallback selection: {X.shape[1]} features (target={expected_k})")
+                st.warning(f" Fallback selection: {X.shape[1]} features (target={expected_k})")
 
         # STEP 4: MCDFN prediction (expects 3D: [batch, timesteps/features, channels])
         X_reshaped = X.reshape(X.shape[0], X.shape[1], 1)
         if st.session_state.get('show_debug', False):
-            st.info(f"🔧 Input shape to SUREcast: {X_reshaped.shape}")
+            st.info(f" Input shape to SUREcast: {X_reshaped.shape}")
 
         mcdfn_mean, mcdfn_std = models['mcdfn'].predict(X_reshaped, verbose=0)
         mcdfn_pred = float(mcdfn_mean.flatten()[0])
@@ -679,11 +679,11 @@ def make_prediction(models, input_data):
         }
 
     except Exception as e:
-        st.error(f"❌ Prediction error: {str(e)}")
-        st.error("💡 This usually means the input data doesn't match the training schema")
+        st.error(f" Prediction error: {str(e)}")
+        st.error(" This usually means the input data doesn't match the training schema")
 
         # Show detailed error for debugging
-        with st.expander("🔍 Debug Information"):
+        with st.expander(" Debug Information"):
             st.write("**Error Type:**")
             st.code(type(e).__name__)
 
@@ -811,17 +811,17 @@ def main():
     # Header
     st.markdown("""
     <div class="main-header">
-        <h1>🚀 Advanced Supply Chain Forecasting System</h1>
-        <p>AI-Powered Demand Prediction with DPO Integration | By Sanyam Kathed & Hith Rahil Nidhan</p>
+        <h1> SUREcast</h1>
+        <p>an AI-Powered Sales forecasting with DPO Integration | By Sanyam Kathed & Hith Rahil Nidhan in collaboration with ETH Zurich</p>
     </div>
     """, unsafe_allow_html=True)
 
     # Load models
-    with st.spinner("🔄 Loading models..."):
+    with st.spinner(" Loading models..."):
         models = load_models()
 
     if models is None:
-        st.error("❌ Failed to load models. Please run the training script first.")
+        st.error(" Failed to load models. Please run the training script first.")
         return
 
     # Initialize LLM
@@ -830,30 +830,30 @@ def main():
     # Sidebar
     with st.sidebar:
         st.image("https://img.icons8.com/fluency/96/000000/supply-chain.png", width=100)
-        st.title("🎛️ Control Panel")
+        st.title(" Control Panel")
 
         page = st.radio(
             "Navigation",
-            ["🏠 Dashboard", " SUREcast Prediction", "Model Analytics",
+            [" Dashboard", " SUREcast Prediction", "Model Analytics",
              " DPO Training", " Batch Analysis", "⚙️ Settings"]
         )
 
         st.markdown("---")
 
         # Model status
-        st.subheader("📡 System Status")
+        st.subheader(" System Status")
         if models:
-            st.markdown('<div class="status-badge status-success">✅ Models Loaded</div>', unsafe_allow_html=True)
+            st.markdown('<div class="status-badge status-success"> Models Loaded</div>', unsafe_allow_html=True)
         if llm.is_available:
-            st.markdown('<div class="status-badge status-success">✅ LLM Online</div>', unsafe_allow_html=True)
+            st.markdown('<div class="status-badge status-success"> LLM Online</div>', unsafe_allow_html=True)
         else:
-            st.markdown('<div class="status-badge status-warning">⚠️ LLM Offline</div>', unsafe_allow_html=True)
+            st.markdown('<div class="status-badge status-warning"> LLM Offline</div>', unsafe_allow_html=True)
 
         st.markdown("---")
 
         # Quick stats
         if 'metadata' in models:
-            st.subheader("📋 Model Info")
+            st.subheader(" Model Info")
             st.write(f"**Version:** {models['metadata'].get('model_version', 'N/A')}")
             st.write(f"**Trained:** {models['metadata'].get('training_date', 'N/A')}")
             st.write(f"**Features:** {models['metadata'].get('n_features', 'N/A')}")
@@ -956,26 +956,26 @@ def show_dashboard(models, llm):
 
 def show_prediction_page(models, llm):
     """Interactive prediction interface"""
-    st.header("🔮 Make a Prediction")
+    st.header(" Make a Prediction")
 
     # Dataset selection section
     st.subheader("📂 Step 1: Select Dataset")
 
     dataset_option = st.radio(
         "Choose your data source:",
-        ["📊 Use Default Dataset (Training Data)", "📁 Upload Custom CSV"],
+        [" Use Default Dataset (Training Data)", "📁 Upload Custom CSV"],
         horizontal=True
     )
 
     selected_df = None
 
-    if dataset_option == "📊 Use Default Dataset (Training Data)":
+    if dataset_option == " Use Default Dataset (Training Data)":
         default_file = 'supply_chain_synthesized_dataset.csv'
 
         if os.path.exists(default_file):
             try:
                 selected_df = pd.read_csv(default_file, encoding='latin1')
-                st.success(f"✅ Loaded default dataset: {len(selected_df):,} records")
+                st.success(f" Loaded default dataset: {len(selected_df):,} records")
 
                 col1, col2, col3, col4 = st.columns(4)
                 with col1:
@@ -989,15 +989,15 @@ def show_prediction_page(models, llm):
                     markets = selected_df['Market'].nunique() if 'Market' in selected_df.columns else 0
                     st.metric("Markets", markets)
 
-                with st.expander("👁️ Preview Dataset", expanded=False):
+                with st.expander(" Preview Dataset", expanded=False):
                     st.dataframe(selected_df.head(20), use_container_width=True)
 
             except Exception as e:
-                st.error(f"❌ Error loading default dataset: {str(e)}")
-                st.info("💡 Please ensure 'supply_chain_synthesized_dataset.csv' is in the same directory")
+                st.error(f" Error loading default dataset: {str(e)}")
+                st.info(" Please ensure 'supply_chain_synthesized_dataset.csv' is in the same directory")
         else:
-            st.error(f"❌ Default dataset not found: {default_file}")
-            st.info("💡 Please ensure 'supply_chain_synthesized_dataset.csv' is in the same directory")
+            st.error(f" Default dataset not found: {default_file}")
+            st.info(" Please ensure 'supply_chain_synthesized_dataset.csv' is in the same directory")
 
     else:  # Upload Custom CSV
         st.markdown(
@@ -1005,7 +1005,7 @@ def show_prediction_page(models, llm):
             unsafe_allow_html=True)
 
         uploaded_file = st.file_uploader(
-            "📤 Drop your CSV file here or click to browse",
+            " Drop your CSV file here or click to browse",
             type=['csv'],
             help="Upload a CSV file with supply chain data"
         )
@@ -1013,7 +1013,7 @@ def show_prediction_page(models, llm):
         if uploaded_file is not None:
             try:
                 selected_df = pd.read_csv(uploaded_file, encoding='latin1')
-                st.success(f"✅ Successfully loaded: {uploaded_file.name}")
+                st.success(f" Successfully loaded: {uploaded_file.name}")
 
                 col1, col2, col3 = st.columns(3)
                 with col1:
@@ -1030,17 +1030,17 @@ def show_prediction_page(models, llm):
                     missing_features = [f for f in required_features if f not in selected_df.columns]
 
                     if missing_features:
-                        st.warning(f"⚠️ Missing {len(missing_features)} required features")
-                        with st.expander("📋 View Missing Features"):
+                        st.warning(f" Missing {len(missing_features)} required features")
+                        with st.expander(" View Missing Features"):
                             st.write(missing_features)
                     else:
-                        st.success("✅ All required features present!")
+                        st.success(" All required features present!")
 
-                with st.expander("👁️ Preview Uploaded Data", expanded=True):
+                with st.expander(" Preview Uploaded Data", expanded=True):
                     st.dataframe(selected_df.head(20), use_container_width=True)
 
                     # Data quality report
-                    st.subheader("📊 Data Quality Report")
+                    st.subheader(" Data Quality Report")
                     col1, col2 = st.columns(2)
 
                     with col1:
@@ -1058,26 +1058,26 @@ def show_prediction_page(models, llm):
                         st.dataframe(selected_df.describe(), use_container_width=True)
 
             except Exception as e:
-                st.error(f"❌ Error reading file: {str(e)}")
-                st.info("💡 Please ensure your CSV file is properly formatted")
+                st.error(f" Error reading file: {str(e)}")
+                st.info(" Please ensure your CSV file is properly formatted")
 
     # Only show prediction interface if dataset is loaded
     if selected_df is not None:
         st.markdown("---")
-        st.subheader("🎯 Step 2: Select Record or Enter Manual Input")
+        st.subheader(" Step 2: Select Record or Enter Manual Input")
 
         input_method = st.radio(
             "Choose input method:",
-            ["🔢 Select from Dataset", "✍️ Manual Input"],
+            [" Select from Dataset", " Manual Input"],
             horizontal=True
         )
 
-        if input_method == "🔢 Select from Dataset":
+        if input_method == " Select from Dataset":
             show_dataset_prediction(models, llm, selected_df)
         else:
             show_manual_prediction(models, llm)
     else:
-        st.info("👆 Please select a dataset to continue")
+        st.info(" Please select a dataset to continue")
 
 
 def show_dataset_prediction(models, llm, df):
@@ -1105,7 +1105,7 @@ def show_dataset_prediction(models, llm, df):
 
     with col2:
         # Random selection button
-        if st.button("🎲 Random Record", use_container_width=True):
+        if st.button(" Random Record", use_container_width=True):
             st.session_state['selected_idx'] = np.random.randint(0, len(filtered_df))
 
     # Record selector
@@ -1118,7 +1118,7 @@ def show_dataset_prediction(models, llm, df):
     selected_record = filtered_df.iloc[record_idx]
 
     # Display selected record
-    with st.expander("📋 Selected Record Details", expanded=True):
+    with st.expander(" Selected Record Details", expanded=True):
         col1, col2 = st.columns(2)
 
         with col1:
@@ -1132,8 +1132,8 @@ def show_dataset_prediction(models, llm, df):
                     st.write(f"**{key}:** {value}")
 
     # Predict button
-    if st.button("🚀 Generate Prediction for Selected Record", use_container_width=True, type="primary"):
-        with st.spinner("🔄 Analyzing data..."):
+    if st.button(" Generate Prediction for Selected Record", use_container_width=True, type="primary"):
+        with st.spinner(" Analyzing data..."):
             # Prepare input
             input_data = pd.DataFrame([selected_record])
 
@@ -1154,28 +1154,28 @@ def show_manual_prediction(models, llm):
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.subheader("📦 Product Details")
+            st.subheader(" Product Details")
             product_price = st.number_input("Product Price ($)", min_value=0.0, value=100.0, step=10.0)
             order_quantity = st.number_input("Order Quantity", min_value=1, value=10, step=1)
             benefit_per_order = st.number_input("Benefit per Order ($)", min_value=0.0, value=20.0, step=5.0)
             sales_per_customer = st.number_input("Sales per Customer ($)", min_value=0.0, value=150.0, step=10.0)
 
         with col2:
-            st.subheader("🚚 Logistics")
+            st.subheader(" Logistics")
             shipping_days = st.number_input("Days for Shipping", min_value=0, value=3, step=1)
             late_delivery_risk = st.slider("Late Delivery Risk", 0.0, 1.0, 0.2, 0.1)
             market = st.selectbox("Market", ["Europe", "USCA", "LATAM", "Africa", "Pacific Asia"])
             shipping_mode = st.selectbox("Shipping Mode", ["Standard Class", "First Class", "Second Class", "Same Day"])
 
         with col3:
-            st.subheader("📅 Temporal & Category")
+            st.subheader(" Temporal & Category")
             order_month = st.slider("Order Month", 1, 12, 6)
             is_holiday = st.checkbox("Holiday Season")
             category = st.selectbox("Category", ["Technology", "Office Supplies", "Furniture"])
             department = st.selectbox("Department", ["Technology", "Fitness", "Apparel", "Fan Shop"])
 
         st.markdown("---")
-        st.subheader("🌍 Geographic & Risk Factors")
+        st.subheader(" Geographic & Risk Factors")
 
         col4, col5 = st.columns(2)
         with col4:
@@ -1188,10 +1188,10 @@ def show_manual_prediction(models, llm):
             port_congestion = st.slider("Port Congestion Score", 0.0, 10.0, 3.0, 0.5)
             storm_severity = st.slider("Storm Severity Score", 0.0, 5.0, 0.0, 0.5)
 
-        submitted = st.form_submit_button("🚀 Generate Prediction", use_container_width=True)
+        submitted = st.form_submit_button(" Generate Prediction", use_container_width=True)
 
         if submitted:
-            with st.spinner("🔄 Analyzing data..."):
+            with st.spinner(" Analyzing data..."):
                 # Create input dataframe with all features
                 input_data = pd.DataFrame({
                     'Product Price': [product_price],
@@ -1249,7 +1249,7 @@ def show_manual_prediction(models, llm):
 
 def display_prediction_results(result, llm, input_record):
     """Display prediction results with visualizations and insights"""
-    st.success("✅ Prediction completed successfully!")
+    st.success(" Prediction completed successfully!")
 
     # Main prediction display
     col1, col2 = st.columns([2, 1])
@@ -1273,7 +1273,7 @@ def display_prediction_results(result, llm, input_record):
         </div>
 
         <div class="info-box">
-            <strong>📊 Prediction Details:</strong><br><br>
+            <strong> Prediction Details:</strong><br><br>
             <strong> Model:</strong> ${result['mcdfn_pred']:,.2f}<br>
             <strong>Ensemble Model:</strong> ${result['ensemble_pred']:,.2f}<br>
             <strong>Combined (60/40):</strong> ${result['prediction']:,.2f}<br><br>
@@ -1285,7 +1285,7 @@ def display_prediction_results(result, llm, input_record):
         """, unsafe_allow_html=True)
 
     # Model breakdown
-    st.subheader("🔍 Model Component Analysis")
+    st.subheader(" Model Component Analysis")
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -1342,8 +1342,8 @@ def display_prediction_results(result, llm, input_record):
 
     # LLM Insights
     if llm.is_available:
-        with st.expander("🧠 AI-Generated Business Insights", expanded=True):
-            with st.spinner("🤖 Generating insights with Llama2..."):
+        with st.expander(" AI-Generated Business Insights", expanded=True):
+            with st.spinner(" Generating insights with Llama2..."):
                 # Create detailed prompt
                 prompt = f"""
                 Analyze this supply chain sales prediction:
@@ -1371,10 +1371,10 @@ def display_prediction_results(result, llm, input_record):
                 insights = llm.query_llama2(prompt, max_tokens=250)
                 st.markdown(insights)
     else:
-        st.warning("⚠️ LLM insights unavailable. Start Ollama server for AI-powered analysis.")
+        st.warning(" LLM insights unavailable. Start Ollama server for AI-powered analysis.")
 
     # Risk assessment
-    st.subheader("⚠️ Risk Assessment")
+    st.subheader(" Risk Assessment")
 
     risk_factors = []
     risk_scores = []
@@ -1436,7 +1436,7 @@ def display_prediction_results(result, llm, input_record):
 
     # Download prediction report
     st.markdown("---")
-    st.subheader("📥 Export Results")
+    st.subheader(" Export Results")
 
     # Create downloadable report
     report_data = {
@@ -1462,7 +1462,7 @@ def display_prediction_results(result, llm, input_record):
     with col1:
         csv = report_df.to_csv(index=False)
         st.download_button(
-            label="📄 Download CSV Report",
+            label=" Download CSV Report",
             data=csv,
             file_name=f"prediction_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv",
@@ -1472,7 +1472,7 @@ def display_prediction_results(result, llm, input_record):
     with col2:
         json_report = report_df.to_json(orient='records', indent=2)
         st.download_button(
-            label="📋 Download JSON Report",
+            label=" Download JSON Report",
             data=json_report,
             file_name=f"prediction_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
             mime="application/json",
@@ -1482,9 +1482,9 @@ def display_prediction_results(result, llm, input_record):
 
 def show_analytics_page(models):
     """Model analytics and performance metrics"""
-    st.header("📊 Model Analytics")
+    st.header(" Model Analytics")
 
-    tabs = st.tabs(["📈 Performance", "🎯 Feature Importance", "📉 Error Analysis", "🔍 Model Comparison"])
+    tabs = st.tabs([" Performance", " Feature Importance", " Error Analysis", " Model Comparison"])
 
     with tabs[0]:
         st.subheader("Performance Metrics")
@@ -1607,7 +1607,7 @@ def show_analytics_page(models):
 
 def show_dpo_page(models):
     """DPO Training Interface"""
-    st.header("🧠 Direct Preference Optimization (DPO)")
+    st.header(" Direct Preference Optimization (DPO)")
 
     st.markdown("""
     <div class="info-box">
@@ -1635,13 +1635,13 @@ def show_dpo_page(models):
         progress = min(len(preferences) / 50, 1.0)
         st.metric("Training Readiness", f"{progress * 100:.0f}%")
     with col3:
-        status = "Ready to Train! 🚀" if len(preferences) >= 50 else "Collecting... 📊"
+        status = "Ready to Train! " if len(preferences) >= 50 else "Collecting... 📊"
         st.metric("DPO Status", status)
 
     st.progress(progress)
 
     # Preference collection interface
-    st.subheader("📝 Collect New Preference")
+    st.subheader(" Collect New Preference")
 
     with st.form("preference_form"):
         st.write("**Scenario Setup**")
@@ -1664,7 +1664,7 @@ def show_dpo_page(models):
         reasoning = st.text_area("Reasoning (optional):",
                                  placeholder="Why did you prefer this prediction?")
 
-        submitted = st.form_submit_button("💾 Save Preference", use_container_width=True)
+        submitted = st.form_submit_button(" Save Preference", use_container_width=True)
 
         if submitted:
             new_preference = {
@@ -1685,11 +1685,11 @@ def show_dpo_page(models):
             with open('dpo_preferences.json', 'w') as f:
                 json.dump(preferences, f, indent=2)
 
-            st.success(f"✅ Preference saved! Total: {len(preferences)}")
+            st.success(f" Preference saved! Total: {len(preferences)}")
             st.balloons()
 
     # View collected preferences
-    with st.expander("📋 View Collected Preferences", expanded=False):
+    with st.expander(" View Collected Preferences", expanded=False):
         if preferences:
             df_prefs = pd.DataFrame(preferences[-10:])  # Show last 10
             st.dataframe(df_prefs, use_container_width=True)
@@ -1700,10 +1700,10 @@ def show_dpo_page(models):
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("🚀 Start DPO Training", disabled=len(preferences) < 50,
+        if st.button(" Start DPO Training", disabled=len(preferences) < 50,
                      use_container_width=True, type="primary"):
-            with st.spinner("🔄 Training DPO model... This may take several minutes."):
-                st.info("⚠️ This would trigger the DPO training pipeline from your main script.")
+            with st.spinner(" Training DPO model... This may take several minutes."):
+                st.info(" This would trigger the DPO training pipeline from your main script.")
                 st.code("python sanyam_reducing_overfitting_5branch_llm.py --train-dpo", language="bash")
 
                 # Simulate training progress
@@ -1716,13 +1716,13 @@ def show_dpo_page(models):
                     import time
                     time.sleep(0.05)
 
-                st.success("✅ DPO training completed! Model performance improved by 2.3%")
+                st.success(" DPO training completed! Model performance improved by 2.3%")
                 st.balloons()
 
 
 def show_batch_analysis(models):
     """Batch prediction analysis"""
-    st.header("📈 Batch Analysis")
+    st.header(" Batch Analysis")
 
     st.markdown("""
     <div class="info-box">
@@ -1733,19 +1733,19 @@ def show_batch_analysis(models):
     # Dataset selection
     batch_option = st.radio(
         "Select data source for batch analysis:",
-        ["📊 Use Default Dataset", "📁 Upload Custom CSV"],
+        [" Use Default Dataset", "📁 Upload Custom CSV"],
         horizontal=True
     )
 
     batch_df = None
 
-    if batch_option == "📊 Use Default Dataset":
+    if batch_option == " Use Default Dataset":
         default_file = 'supply_chain_synthesized_dataset.csv'
 
         if os.path.exists(default_file):
             try:
                 batch_df = pd.read_csv(default_file, encoding='latin1')
-                st.success(f"✅ Loaded default dataset: {len(batch_df):,} records")
+                st.success(f" Loaded default dataset: {len(batch_df):,} records")
 
                 # Allow sampling for large datasets
                 if len(batch_df) > 1000:
@@ -1757,23 +1757,23 @@ def show_batch_analysis(models):
                         step=100
                     )
                     batch_df = batch_df.sample(n=sample_size, random_state=42)
-                    st.info(f"📊 Using random sample of {sample_size:,} records")
+                    st.info(f" Using random sample of {sample_size:,} records")
 
             except Exception as e:
-                st.error(f"❌ Error loading default dataset: {str(e)}")
+                st.error(f" Error loading default dataset: {str(e)}")
         else:
-            st.error(f"❌ Default dataset not found: {default_file}")
+            st.error(f" Default dataset not found: {default_file}")
 
     else:  # Upload custom CSV
-        uploaded_file = st.file_uploader("📤 Upload CSV file for batch analysis", type=['csv'])
+        uploaded_file = st.file_uploader(" Upload CSV file for batch analysis", type=['csv'])
 
         if uploaded_file is not None:
             try:
                 batch_df = pd.read_csv(uploaded_file, encoding='latin1')
-                st.success(f"✅ Successfully loaded: {uploaded_file.name}")
+                st.success(f" Successfully loaded: {uploaded_file.name}")
 
                 if len(batch_df) > 1000:
-                    st.warning(f"⚠️ Large dataset detected ({len(batch_df):,} records). This may take a while.")
+                    st.warning(f" Large dataset detected ({len(batch_df):,} records). This may take a while.")
                     use_sample = st.checkbox("Use sample for faster processing?", value=True)
 
                     if use_sample:
@@ -1782,10 +1782,10 @@ def show_batch_analysis(models):
                         st.info(f"Using {sample_size:,} records")
 
             except Exception as e:
-                st.error(f"❌ Error reading file: {str(e)}")
+                st.error(f" Error reading file: {str(e)}")
 
     if batch_df is not None:
-        st.subheader("📊 Dataset Overview")
+        st.subheader(" Dataset Overview")
 
         col1, col2, col3, col4 = st.columns(4)
         with col1:
@@ -1799,10 +1799,10 @@ def show_batch_analysis(models):
             missing_pct = (batch_df.isnull().sum().sum() / (len(batch_df) * len(batch_df.columns))) * 100
             st.metric("Data Completeness", f"{100 - missing_pct:.1f}%")
 
-        with st.expander("👁️ Preview Data"):
+        with st.expander(" Preview Data"):
             st.dataframe(batch_df.head(20), use_container_width=True)
 
-        if st.button("🚀 Generate Batch Predictions", use_container_width=True, type="primary"):
+        if st.button(" Generate Batch Predictions", use_container_width=True, type="primary"):
             with st.spinner("🔄 Processing batch predictions..."):
                 # Simulate batch processing
                 progress_bar = st.progress(0)
@@ -1817,7 +1817,7 @@ def show_batch_analysis(models):
                 batch_df['Predicted_Sales'] = predictions
                 batch_df['Prediction_Confidence'] = np.random.choice(['High', 'Medium', 'Low'], len(batch_df))
 
-                st.success(f"✅ Generated {len(predictions)} predictions!")
+                st.success(f" Generated {len(predictions)} predictions!")
 
                 # Summary statistics
                 col1, col2, col3, col4 = st.columns(4)
@@ -1849,7 +1849,7 @@ def show_batch_analysis(models):
                 st.plotly_chart(fig, use_container_width=True)
 
                 # Download results
-                st.subheader("📥 Download Results")
+                st.subheader(" Download Results")
                 csv = batch_df.to_csv(index=False)
                 st.download_button(
                     label="⬇️ Download Predictions CSV",
@@ -1860,7 +1860,7 @@ def show_batch_analysis(models):
                 )
 
                 # Detailed results table
-                with st.expander("📋 View All Predictions", expanded=False):
+                with st.expander(" View All Predictions", expanded=False):
                     st.dataframe(batch_df, use_container_width=True)
 
 
@@ -1868,7 +1868,7 @@ def show_settings_page():
     """Application settings"""
     st.header("⚙️ Settings")
 
-    tabs = st.tabs(["🔧 Model Settings", "🌐 API Configuration", "📊 Display Preferences", "🐛 Debug Tools", "ℹ️ About"])
+    tabs = st.tabs([" Model Settings", " API Configuration", " Display Preferences", " Debug Tools", " About"])
 
     with tabs[0]:
         st.subheader("Model Configuration")
@@ -1886,7 +1886,7 @@ def show_settings_page():
         st.checkbox("Auto-save Predictions", value=False)
 
         if st.button("💾 Save Model Settings", use_container_width=True):
-            st.success("✅ Settings saved successfully!")
+            st.success(" Settings saved successfully!")
 
     with tabs[1]:
         st.subheader("API & Integration")
@@ -1903,9 +1903,9 @@ def show_settings_page():
             with st.spinner("Testing connection..."):
                 llm = Llama2Integrator(ollama_url)
                 if llm.is_available:
-                    st.success("✅ Connection successful!")
+                    st.success(" Connection successful!")
                 else:
-                    st.error("❌ Connection failed. Please check your settings.")
+                    st.error(" Connection failed. Please check your settings.")
 
     with tabs[2]:
         st.subheader("Display Preferences")
@@ -1920,11 +1920,11 @@ def show_settings_page():
         st.checkbox("Enable Animations", value=True)
         st.checkbox("Show Tooltips", value=True)
 
-        if st.button("🎨 Apply Theme", use_container_width=True):
-            st.success("✅ Theme applied! Refresh to see changes.")
+        if st.button(" Apply Theme", use_container_width=True):
+            st.success(" Theme applied! Refresh to see changes.")
 
     with tabs[3]:
-        st.subheader("🐛 Debug Tools")
+        st.subheader(" Debug Tools")
 
         st.markdown("""
         <div class="info-box">
@@ -1937,19 +1937,19 @@ def show_settings_page():
         st.session_state['show_debug'] = debug_mode
 
         if debug_mode:
-            st.success("✅ Debug mode enabled - you'll see detailed logs during predictions")
+            st.success(" Debug mode enabled - you'll see detailed logs during predictions")
 
         st.markdown("---")
 
         # Feature validation tool
-        st.subheader("🔍 Feature Validation Tool")
+        st.subheader(" Feature Validation Tool")
 
         if st.button("Check Model Feature Requirements", use_container_width=True):
             models = load_models()
 
             st.markdown("""
             <div class="warning-box">
-                <strong>⚠️ Important:</strong> The model expects exactly 150 features after preprocessing and feature selection.
+                <strong> Important:</strong> The model expects exactly 150 features after preprocessing and feature selection.
                 <br><br>
                 <strong>Pipeline:</strong><br>
                 1. Raw input (~40 features)<br>
@@ -1961,7 +1961,7 @@ def show_settings_page():
             """, unsafe_allow_html=True)
 
             if models:
-                st.write("### 📊 Model Components Status")
+                st.write("###  Model Components Status")
 
                 col1, col2 = st.columns(2)
 
@@ -1977,30 +1977,30 @@ def show_settings_page():
                         st.error("SUREcast Model missing")
 
                     if 'preprocessor' in models:
-                        st.success("✅ Preprocessor")
+                        st.success(" Preprocessor")
                     else:
-                        st.error("❌ Preprocessor missing")
+                        st.error(" Preprocessor missing")
 
                 with col2:
                     if 'ensemble' in models:
-                        st.success("✅ Ensemble Models")
+                        st.success(" Ensemble Models")
                     else:
-                        st.error("❌ Ensemble missing")
+                        st.error(" Ensemble missing")
 
                     if 'feature_engineer' in models:
-                        st.success("✅ Feature Engineer (with selector)")
+                        st.success(" Feature Engineer (with selector)")
                     else:
-                        st.warning("⚠️ Feature Engineer missing (using fallback)")
+                        st.warning(" Feature Engineer missing (using fallback)")
 
                 if 'features' in models:
                     st.write(f"**Required Features:** {len(models['features'])}")
 
-                    with st.expander("📋 View All Required Features"):
+                    with st.expander(" View All Required Features"):
                         for i, feature in enumerate(models['features'], 1):
                             st.write(f"{i}. {feature}")
 
             # Show what feature engineering creates
-            st.subheader("🔧 Feature Engineering Pipeline")
+            st.subheader(" Feature Engineering Pipeline")
 
             st.write("**The system automatically creates these derived features:**")
 
@@ -2008,17 +2008,17 @@ def show_settings_page():
 
             with col1:
                 st.write("**Transformation Types:**")
-                st.write("✓ Squared values (feature²)")
-                st.write("✓ Log transformations (log(feature))")
-                st.write("✓ Percentile ranks")
-                st.write("✓ Z-scores (standardization)")
+                st.write(" Squared values (feature²)")
+                st.write(" Log transformations (log(feature))")
+                st.write(" Percentile ranks")
+                st.write(" Z-scores (standardization)")
 
             with col2:
                 st.write("**Additional Features:**")
-                st.write("✓ Moving averages")
-                st.write("✓ Interaction terms")
-                st.write("✓ Temporal encodings")
-                st.write("✓ Categorical encodings")
+                st.write(" Moving averages")
+                st.write(" Interaction terms")
+                st.write(" Temporal encodings")
+                st.write(" Categorical encodings")
 
             example_features = [
                 "Order Item Quantity → Order Item Quantity_squared, Order Item Quantity_log, Order Item Quantity_percentile, Order Item Quantity_zscore, Order Item Quantity_ma",
@@ -2033,7 +2033,7 @@ def show_settings_page():
         st.markdown("---")
 
         # Test prediction with sample data
-        st.subheader("🧪 Test Prediction Pipeline")
+        st.subheader(" Test Prediction Pipeline")
 
         if st.button("Run Test Prediction", use_container_width=True):
             with st.spinner("Running test..."):
@@ -2048,7 +2048,7 @@ def show_settings_page():
                     fe = StreamlitFeatureEngineer()
                     enhanced = fe.engineer_features(test_data)
 
-                    st.success(f"✅ Feature engineering successful!")
+                    st.success(f" Feature engineering successful!")
                     st.write(f"Original features: {len(test_data.columns)}")
                     st.write(f"After engineering: {len(enhanced.columns)}")
 
@@ -2056,14 +2056,14 @@ def show_settings_page():
                         st.dataframe(enhanced.T, use_container_width=True)
 
                 except Exception as e:
-                    st.error(f"❌ Test failed: {str(e)}")
+                    st.error(f" Test failed: {str(e)}")
 
     with tabs[4]:
         st.subheader("About This Application")
 
         st.markdown("""
         <div class="success-box">
-            <h3>🚀 Advanced Supply Chain Forecasting System</h3>
+            <h3> Advanced Supply Chain Forecasting System</h3>
             <p><strong>Version:</strong> 1.0.0 (DPO-Enhanced)</p>
             <p><strong>Authors:</strong> Sanyam Kathed & Hith Rahil Nidhan</p>
             <p><strong>Framework:</strong> TensorFlow + Scikit-learn + XGBoost</p>
@@ -2072,22 +2072,22 @@ def show_settings_page():
         <br>
 
         <div class="info-box">
-            <h4>🎯 Key Features</h4>
+            <h4> Key Features</h4>
             <ul>
-                <li>✅ 5-Branch Multi-Channel Data Fusion Network (SUREcast)</li>
-                <li>✅ Direct Preference Optimization (DPO) Integration</li>
-                <li>✅ Real-time Uncertainty Quantification</li>
-                <li>✅ LLM-Powered Insights (Llama2)</li>
-                <li>✅ Ensemble Learning with 6+ Models</li>
-                <li>✅ Advanced Feature Engineering</li>
-                <li>✅ Resilience Metrics & Risk Scoring</li>
+                <li> 5-Branch Multi-Channel Data Fusion Network (SUREcast)</li>
+                <li> Direct Preference Optimization (DPO) Integration</li>
+                <li> Real-time Uncertainty Quantification</li>
+                <li> LLM-Powered Insights (Llama2)</li>
+                <li> Ensemble Learning with 6+ Models</li>
+                <li> Advanced Feature Engineering</li>
+                <li> Resilience Metrics & Risk Scoring</li>
             </ul>
         </div>
 
         <br>
 
         <div class="warning-box">
-            <h4>📚 Documentation</h4>
+            <h4> Documentation</h4>
             <p>For detailed documentation, training guides, and API references, visit:</p>
             <ul>
                 <li>GitHub Repository: <code>your-repo-link</code></li>
@@ -2108,7 +2108,7 @@ def show_settings_page():
             st.metric("Uptime", "99.7%")
 
         st.markdown("---")
-        st.caption("© 2025 Supply Chain Forecasting System. All rights reserved.")
+        st.caption("© 2025 SUREcast: an AI powered Forecasting System. All rights reserved.")
 
 
 # Run the app
