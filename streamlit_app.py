@@ -859,23 +859,23 @@ def main():
             st.write(f"**Features:** {models['metadata'].get('n_features', 'N/A')}")
 
     # Main content
-    if page == "🏠 Dashboard":
+    if page == " Dashboard":
         show_dashboard(models, llm)
-    elif page == "🔮 Make Prediction":
+    elif page == " SUREcast Prediction":
         show_prediction_page(models, llm)
-    elif page == "📊 Model Analytics":
+    elif page == " Model Analytics":
         show_analytics_page(models)
-    elif page == "🧠 DPO Training":
+    elif page == " DPO Training":
         show_dpo_page(models)
-    elif page == "📈 Batch Analysis":
+    elif page == " Batch Analysis":
         show_batch_analysis(models)
-    elif page == "⚙️ Settings":
+    elif page == " Settings":
         show_settings_page()
 
 
 def show_dashboard(models, llm):
     """Display dashboard with key metrics"""
-    st.header("📊 System Dashboard")
+    st.header(" System Dashboard")
 
     # Key metrics
     col1, col2, col3, col4 = st.columns(4)
@@ -922,12 +922,12 @@ def show_dashboard(models, llm):
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("📈 Model Performance")
+        st.subheader(" Model Performance")
         fig = create_gauge_chart(0.942, "R² Score", 1.0)
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("🎯 Prediction Confidence Distribution")
+        st.subheader(" Prediction Confidence Distribution")
         confidence_data = pd.DataFrame({
             'Confidence': ['High', 'Medium', 'Low'],
             'Count': [850, 320, 77]
