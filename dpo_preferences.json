@@ -1,0 +1,602 @@
+[
+  {
+    "timestamp": "2025-10-30T22:10:34.069599",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "date",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:01.272202",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:06.990721",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:13.165839",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:18.390348",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:25.941823",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:30.007966",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:34.489833",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:40.841506",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:47.256954",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:50.605587",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:11:54.288228",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:14.368501",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:20.295343",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:23.985560",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:28.441270",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:32.204079",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:36.705860",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:39.840711",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:43.103096",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:46.688530",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:49.855130",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:52.951866",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:12:56.405226",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:00.376626",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:03.552225",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:07.261919",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:10.089105",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:22.322915",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:25.383626",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:29.518884",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:33.603632",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:37.164411",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:40.874782",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:45.889588",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:51.976529",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:13:56.105612",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:00.858485",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:05.372283",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:08.750164",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:12.550459",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:16.952511",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:20.671946",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:24.820719",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:29.185371",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:33.954499",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:39.272130",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:43.371795",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:47.706914",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  },
+  {
+    "timestamp": "2025-10-30T22:14:51.892319",
+    "scenario_features": {
+      "product_price": 150.0,
+      "quantity": 5,
+      "market": "Europe"
+    },
+    "chosen_prediction": 750.0,
+    "rejected_prediction": 800.0,
+    "reasoning": "a",
+    "preference_strength": 1.0
+  }
+]
