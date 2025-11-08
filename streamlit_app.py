@@ -864,8 +864,8 @@ def main():
         show_dashboard(models, llm)
     elif page == " SUREcast Prediction":
         show_prediction_page(models, llm)
-    elif page == " Model Analytics":
-        show_analytics_page(models)
+    #elif page == " Model Analytics":
+        #show_analytics_page(models)
     elif page == " DPO Training":
         show_dpo_page(models)
     elif page == " Batch Analysis":
