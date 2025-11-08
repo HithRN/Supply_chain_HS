@@ -846,14 +846,14 @@ def create_prediction_chart(prediction_data):
 
 # ==================== MAIN APP ====================
 def main():
-    st.set_option("client.toolbarMode", "viewer")
+    #st.set_option("client.toolbarMode", "viewer")
     st.set_page_config(
         page_title="Supply Chain Forecasting System",
         page_icon="📊",
         layout="wide",
         initial_sidebar_state="expanded"
     )
-    hide_github_elements()
+    #hide_github_elements()
     load_custom_css()
 
     # Header
