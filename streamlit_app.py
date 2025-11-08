@@ -63,6 +63,23 @@ class AdvancedFeatureEngineer:
 
 warnings.filterwarnings('ignore')
 
+def hide_github_elements():
+    """Hide GitHub icon and Fork button"""
+    hide_streamlit_style = """
+        <style>
+        #GithubIcon {
+            visibility: hidden;
+        }
+        .viewerBadge_container__1QSob {
+            display: none;
+        }
+        header[data-testid="stHeader"] > div:nth-child(2) > div > div > button {
+            display: none;
+        }
+        </style>
+    """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 # ==================== CUSTOM CSS ====================
 def load_custom_css():
@@ -806,7 +823,7 @@ def main():
         layout="wide",
         initial_sidebar_state="expanded"
     )
-
+    hide_github_elements()
     load_custom_css()
 
     # Header
