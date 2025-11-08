@@ -835,7 +835,7 @@ def main():
 
         page = st.radio(
             "Navigation",
-            [" Dashboard", " SUREcast Prediction", "Model Analytics",
+            [" Dashboard", " SUREcast Prediction", #"Model Analytics",
              " DPO Training", " Batch Analysis", " Settings"]
         )
 
