@@ -64,21 +64,50 @@ class AdvancedFeatureEngineer:
 warnings.filterwarnings('ignore')
 
 def hide_github_elements():
-    """Hide GitHub icon and Fork button"""
+    """Hide GitHub icon and toolbar buttons using updated CSS selectors"""
     hide_streamlit_style = """
         <style>
+        /* Hide entire toolbar */
+        div[data-testid="stToolbar"] {
+            display: none !important;
+        }
+        
+        /* Hide decoration elements */
+        div[data-testid="stDecoration"] {
+            display: none !important;
+        }
+        
+        /* Hide status widget */
+        div[data-testid="stStatusWidget"] {
+            visibility: hidden !important;
+        }
+        
+        /* Hide GitHub icon specifically */
         #GithubIcon {
-            visibility: hidden;
+            visibility: hidden !important;
         }
-        .viewerBadge_container__1QSob {
-            display: none;
+        
+        /* Hide viewer badge */
+        .viewerBadge_container__1QSob,
+        .styles_viewerBadge__1yB5_,
+        .viewerBadge_link__1S137,
+        .viewerBadge_text__1JaDK {
+            display: none !important;
         }
-        header[data-testid="stHeader"] > div:nth-child(2) > div > div > button {
-            display: none;
+        
+        /* Hide hamburger menu */
+        #MainMenu {
+            visibility: hidden !important;
+        }
+        
+        /* Optional: Hide footer */
+        footer {
+            visibility: hidden !important;
         }
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 
 # ==================== CUSTOM CSS ====================
@@ -817,6 +846,7 @@ def create_prediction_chart(prediction_data):
 
 # ==================== MAIN APP ====================
 def main():
+    st.set_option("client.toolbarMode", "viewer")
     st.set_page_config(
         page_title="Supply Chain Forecasting System",
         page_icon="📊",
