@@ -1322,9 +1322,9 @@ def display_prediction_results(result, llm, input_record):
 
         <div class="info-box">
             <strong> Prediction Details:</strong><br><br>
-            <strong> Model:</strong> ${result['mcdfn_pred']:,.2f}<br>
+            <strong>Hybrid Model:</strong> ${result['mcdfn_pred']:,.2f}<br>
             <strong>Ensemble Model:</strong> ${result['ensemble_pred']:,.2f}<br>
-            <strong>Combined (60/40):</strong> ${result['prediction']:,.2f}<br><br>
+            <strong>SUREcast:</strong> ${result['prediction']:,.2f}<br><br>
             <strong> Confidence Interval (95%):</strong><br>
             Lower Bound: ${result['lower_bound']:,.2f}<br>
             Upper Bound: ${result['upper_bound']:,.2f}<br>
@@ -1333,11 +1333,11 @@ def display_prediction_results(result, llm, input_record):
         """, unsafe_allow_html=True)
 
     # Model breakdown
-    st.subheader(" Model Component Analysis")
+    st.subheader("SUREcast Model Component Analysis")
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric("SUREcast Prediction", f"${result['mcdfn_pred']:,.2f}",
+        st.metric("Hybrid model Prediction", f"${result['mcdfn_pred']:,.2f}",
                   f"{((result['mcdfn_pred'] - result['prediction']) / result['prediction'] * 100):+.1f}%")
     with col2:
         st.metric("Ensemble Prediction", f"${result['ensemble_pred']:,.2f}",
@@ -1351,7 +1351,7 @@ def display_prediction_results(result, llm, input_record):
 
     # Add bars for different predictions
     fig.add_trace(go.Bar(
-        name='MCDFN',
+        name='Hybrid',
         x=['Prediction'],
         y=[result['mcdfn_pred']],
         marker_color='#667eea',
@@ -1369,7 +1369,7 @@ def display_prediction_results(result, llm, input_record):
     ))
 
     fig.add_trace(go.Bar(
-        name='Final (Weighted)',
+        name='SUREcast',
         x=['Prediction'],
         y=[result['prediction']],
         marker_color='#ff7f0e',
