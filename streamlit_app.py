@@ -1765,7 +1765,7 @@ def show_dpo_page(models):
                     time.sleep(0.05)
 
                 st.success(" DPO training completed! Model performance improved by 2.3%")
-                st.balloons()
+                #st.balloons()
 
 
 def show_batch_analysis(models):
